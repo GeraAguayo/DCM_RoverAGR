@@ -8,21 +8,23 @@ BMP bmp_sensor;
 void setup() {
   Serial.begin(9600);
   delay(100);
-  Serial.println("Data collection module - ROVER AGR");
   bmp_sensor.begin();
 }
 
 bool set_up = false;
 
+//Serial Values Standard
+//Temperature val - 0
+//Pressure val - 1
+//Altitude val - 2
+
+
 void loop() {
 
   if (bmp_sensor.is_enabled()){
     bmp_data* data = bmp_sensor.read_values();
-    Serial.println("Temperature:");
     Serial.println(data->temperature);
-    Serial.println("Pressure:");
     Serial.println(data->pressure);
-    Serial.println("Altitude:");
     Serial.println(data->altitude);
     delete data;
   }
