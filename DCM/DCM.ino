@@ -26,6 +26,7 @@ void loop() {
     Serial.println(data->temperature);
     Serial.println(data->pressure);
     Serial.println(data->altitude);
+    Serial.println("END");
     delete data;
   }
   else{
