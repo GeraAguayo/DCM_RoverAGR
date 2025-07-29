@@ -5,6 +5,12 @@
 
 BMP bmp_sensor;
 
+void raise_error();
+
+enum error_ids {
+  BMP_ERROR = 2,
+};
+
 void setup() {
   Serial.begin(9600);
   delay(100);
@@ -20,9 +26,9 @@ bool set_up = false;
 
 
 void loop() {
-
   if (bmp_sensor.is_enabled()){
     bmp_data* data = bmp_sensor.read_values();
+    Serial.println("DATA");
     Serial.println(data->temperature);
     Serial.println(data->pressure);
     Serial.println(data->altitude);
@@ -30,8 +36,17 @@ void loop() {
     delete data;
   }
   else{
-    Serial.println("BMP280 sensor not enabled");
+    //Raise BMP error and try again
+    raise_error(BMP_ERROR);
+    bmp_sensor.begin();
   }
   delay(2500);
+
+}
+
+void raise_error(error_ids id){
+  Serial.println("SYSLOG");
+  Serial.println(id);
+  Serial.println("END");
 
 }

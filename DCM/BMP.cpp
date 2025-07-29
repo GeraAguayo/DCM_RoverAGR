@@ -35,5 +35,9 @@ bmp_data* BMP::read_values(){
 }
 
 bool BMP::is_enabled(){
-  return enabled;
+  if (this->bmp_sensor.begin(0x76)){
+    return true;
+  }else{
+    return false;
+  }
 }
