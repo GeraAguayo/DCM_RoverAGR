@@ -40,8 +40,6 @@ void loop() {
     raise_error(BMP_ERROR);
     bmp_sensor.begin();
   }
-  delay(2500);
-
 }
 
 void raise_error(error_ids id){
