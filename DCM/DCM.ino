@@ -80,8 +80,8 @@ void loop() {
     Serial.println(altitude);
     Serial.println(humidity);
     Serial.println(gas);
-    Serial.println(latitude);
-    Serial.println(longitude);
+    Serial.println(latitude, 6);
+    Serial.println(longitude, 6);
     Serial.println("END");
 
   }
