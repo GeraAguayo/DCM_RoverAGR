@@ -57,14 +57,13 @@ void loop() {
 
   //Read bme680
   if (bme_sensor.is_enabled()){
-    bme_data* data = bme_sensor.get_values();
-    temperature = data->temperature;
-    pressure = data->pressure;
-    altitude = data->altitude;
-    humidity = data->humidity;
-    gas = data->gas;
+    bme_data data = bme_sensor.get_values();
+    temperature = data.temperature;
+    pressure = data.pressure;
+    altitude = data.altitude;
+    humidity = data.humidity;
+    gas = data.gas;
     valid_data = true;
-    delete data;
   }
   else{
     //Raise BME error and try again

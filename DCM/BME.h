@@ -5,7 +5,6 @@
 //GRI
 
 #include <Wire.h>
-//#include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_BME680.h"
 
@@ -24,7 +23,7 @@ class BME{
     BME();
     ~BME();
     void begin();
-    bme_data* get_values();
+    bme_data get_values();
     bool is_enabled();
 };
 

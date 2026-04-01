@@ -33,17 +33,17 @@ BME::~BME(){
   //destructor
 }
 
-bme_data* BME::get_values(){
-  bme_data* data_set = new bme_data;
+bme_data BME::get_values(){
+  bme_data data_set = bme_data{};
   //read from sensor
   this->bme.beginReading();
   delay(50);
   //save values
-  data_set->temperature = this->bme.temperature;
-  data_set->pressure = this->bme.pressure;
-  data_set->humidity = this->bme.humidity;
-  data_set->gas = this->bme.gas_resistance / 1000.0;
-  data_set->altitude = this->bme.readAltitude(SEALEVELPRESSURE_HPA);
+  data_set.temperature = this->bme.temperature;
+  data_set.pressure = this->bme.pressure;
+  data_set.humidity = this->bme.humidity;
+  data_set.gas = this->bme.gas_resistance / 1000.0;
+  data_set.altitude = this->bme.readAltitude(SEALEVELPRESSURE_HPA);
   return data_set;
 
 }
